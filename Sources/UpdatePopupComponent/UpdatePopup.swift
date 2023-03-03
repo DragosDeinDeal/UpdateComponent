@@ -76,7 +76,7 @@ public struct UpdatePopupStringsData {
 public protocol UpdatePopupInterface {
   var inputData: UpdatePopupInputData { get set }
   var alertController: DDAlertController? { get }
-  var stringsData: UpdatePopupStringsData { get }
+  var stringsData: UpdatePopupStringsData { get set }
   
   func currentVersionLessThan(version: String) -> Bool
   func canShowRecommendedVersionAlert() -> Bool
