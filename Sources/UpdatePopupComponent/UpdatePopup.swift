@@ -59,14 +59,18 @@ public struct UpdatePopupStringsData {
     }
     
     /// strings for force update HUD
-    public let forceUpdatePopupButtonTitle: String
-    public let forceUpdatePopupLabelTitle: String
+    public var forceUpdatePopupButtonTitle: String
+    public var forceUpdatePopupLabelTitle: String
     
     /// strings for recommended version update HUD
-    public let updatePopupCancelButtonTitle: String
-    public let updatePopupButtonTitle: String
-    public let updatePopupTitle: String
-    public let updatePopupMessage: String
+    public var updatePopupCancelButtonTitle: String
+    public var updatePopupButtonTitle: String
+    public var updatePopupTitle: String
+    public var updatePopupMessage: String
+    
+    public mutating func changeUpdatePopupMessage(newMessage: String) {
+        self.updatePopupMessage = newMessage
+    }
 }
 
 public protocol UpdatePopupInterface {
