@@ -17,7 +17,12 @@ extension UpdatePopupImplementation: SKStoreProductViewControllerDelegate {
         
         let parameters = [SKStoreProductParameterITunesItemIdentifier : identifier]
         storeViewController.loadProduct(withParameters: parameters) { [weak self] (loaded, error) in
+            if let skError = error {
+                LoadingIndicator.hideSpinner()
+                print("Store Kit ERROR: $$$", skError)
+            }
             if loaded {
+                LoadingIndicator.hideSpinner()
                 self?.topControllerPresent(viewController: storeViewController)
             }
         }

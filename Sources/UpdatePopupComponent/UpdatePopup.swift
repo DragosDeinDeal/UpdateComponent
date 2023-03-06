@@ -146,7 +146,6 @@ public class UpdatePopupImplementation: NSObject, UpdatePopupInterface {
         return
       }
         DispatchQueue.main.async {
-          LoadingIndicator.hideSpinner()
           self.openStoreProductWithiTunesItemIdentifier(identifier)
       }
     })
