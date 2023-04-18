@@ -12,7 +12,7 @@ import UIKit
 // App store redirect
 extension UpdatePopupImplementation {
     public func openStoreProductWithiTunesItemIdentifier(_ identifier: String) {
-        if let url = URL(string: "itms-apps://itunes.apple.com/app/id\(identifier))") {
+        if let url = URL(string: "https://apps.apple.com/us/app/id\(identifier))") {
             UIApplication.shared.open(url)
         }
         LoadingIndicator.hideSpinner()
