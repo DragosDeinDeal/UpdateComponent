@@ -7,29 +7,15 @@
 //
 
 import Foundation
-import StoreKit
+import UIKit
 
 // App store redirect
-extension UpdatePopupImplementation: SKStoreProductViewControllerDelegate {
+extension UpdatePopupImplementation {
     public func openStoreProductWithiTunesItemIdentifier(_ identifier: String) {
-        let storeViewController = SKStoreProductViewController()
-        storeViewController.delegate = self
-        
-        let parameters = [SKStoreProductParameterITunesItemIdentifier : identifier]
-        storeViewController.loadProduct(withParameters: parameters) { [weak self] (loaded, error) in
-            if let skError = error {
-                LoadingIndicator.hideSpinner()
-                print("Store Kit ERROR: $$$", skError)
-            }
-            if loaded {
-                LoadingIndicator.hideSpinner()
-                self?.topControllerPresent(viewController: storeViewController)
-            }
+        if let url = URL(string: "itms-apps://itunes.apple.com/app/id\(identifier))") {
+            UIApplication.shared.open(url)
         }
-    }
-    
-    public func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
-        viewController.dismiss(animated: true, completion: nil)
+        LoadingIndicator.hideSpinner()
     }
     
     func showForceUpdate() {
@@ -63,7 +49,7 @@ extension UpdatePopupImplementation: SKStoreProductViewControllerDelegate {
     func getTopMostViewController() -> UIViewController {
         let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
         if var topController = window?.rootViewController {
-            while let presentedViewController = topController.presentedViewController, !(topController.presentedViewController is SKStoreProductViewController) {
+            while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
             return topController
