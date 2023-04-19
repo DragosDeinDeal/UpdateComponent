@@ -25,6 +25,8 @@ extension UpdatePopupImplementation {
         
         let title = stringsData.forceUpdatePopupLabelTitle
         let buttonTitle = stringsData.forceUpdatePopupButtonTitle
+        
+        topControllerDismissKeyboard()
         createForceUpdateAlert(for: window, title: title, buttonTitle: buttonTitle)
     }
     
@@ -34,8 +36,14 @@ extension UpdatePopupImplementation {
         }
         
         if let alert = alertController {
+            topControllerDismissKeyboard()
             topControllerPresent(viewController: alert)
         }
+    }
+    
+    private func topControllerDismissKeyboard() {
+        let topController = getTopMostViewController()
+        topController.view.endEditing(true)
     }
     
     private func topControllerPresent(viewController: UIViewController) {
