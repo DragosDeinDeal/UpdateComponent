@@ -110,8 +110,8 @@ public class UpdatePopupImplementation: NSObject, UpdatePopupInterface {
        alertController: DDAlertController? = nil,
        service: ItunesService = ItunesServiceImplementation()) {
     
-    if inputData.timeIntervalToShowAfterCancel < 30 {
-      fatalError("TIME INTERVAL SHOULD BE A MINIMUM OF 30 DAYS")
+    if inputData.timeIntervalToShowAfterCancel < 1 {
+      fatalError("TIME INTERVAL SHOULD BE A MINIMUM OF 1 DAY")
     }
     
     self.stringsData = stringsData
