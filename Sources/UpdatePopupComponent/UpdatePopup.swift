@@ -196,7 +196,7 @@ public class UpdatePopupImplementation: NSObject, UpdatePopupInterface {
       let numberOfDays = calendar.dateComponents([.day], from: popupDate, to: Date())
       
       #if DEBUG
-        return numberOfMinutes.minute! >= 3
+        return numberOfMinutes.minute! >= 1
       #else
       return numberOfDays.day! >= inputData.timeIntervalToShowAfterCancel
       #endif
